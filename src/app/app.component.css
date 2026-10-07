@@ -1,0 +1,268 @@
+:host {
+  display: block;
+}
+
+.pagina {
+  width: min(1100px, calc(100% - 32px));
+  margin: 0 auto;
+  padding: 48px 0;
+}
+
+.cabecalho {
+  padding: 20px 0 34px;
+}
+
+.tag {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 1.5px;
+  background: #18181b;
+  color: white;
+  padding: 7px 10px;
+  border-radius: 5px;
+}
+
+h1 {
+  font-size: clamp(32px, 6vw, 56px);
+  line-height: 1;
+  margin: 14px 0;
+  letter-spacing: -2px;
+}
+
+.cabecalho p {
+  margin: 0;
+  color: #71717a;
+  font-size: 17px;
+}
+
+.painel {
+  background: white;
+  border: 1px solid #e4e4e7;
+  border-radius: 14px;
+  padding: 28px;
+  margin-bottom: 22px;
+}
+
+.titulo-secao > div {
+  display: flex;
+  gap: 15px;
+  align-items: flex-start;
+}
+
+.numero {
+  display: grid;
+  place-items: center;
+  width: 38px;
+  height: 38px;
+  background: #18181b;
+  color: white;
+  border-radius: 8px;
+  font-size: 12px;
+  font-weight: 800;
+}
+
+h2 {
+  margin: 0 0 5px;
+  font-size: 24px;
+}
+
+.titulo-secao p {
+  margin: 0 0 25px;
+  color: #71717a;
+}
+
+.formulario {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 18px;
+}
+
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.campo label {
+  font-weight: 700;
+  font-size: 13px;
+}
+
+.campo input {
+  width: 100%;
+  padding: 12px 13px;
+  border: 1px solid #d4d4d8;
+  border-radius: 7px;
+  outline: none;
+  background: #fafafa;
+}
+
+.campo input:focus {
+  border-color: #18181b;
+  background: white;
+}
+
+.campo-grande {
+  grid-column: span 2;
+}
+
+.acoes-form {
+  grid-column: span 2;
+  display: flex;
+  gap: 10px;
+  margin-top: 4px;
+}
+
+.btn {
+  border: 0;
+  border-radius: 7px;
+  padding: 11px 15px;
+  cursor: pointer;
+  font-weight: 750;
+  transition: transform .15s, opacity .15s;
+}
+
+.btn:hover {
+  transform: translateY(-1px);
+}
+
+.principal {
+  background: #18181b;
+  color: white;
+}
+
+.secundario {
+  background: #e4e4e7;
+  color: #18181b;
+}
+
+.editar {
+  background: #e4e4e7;
+  color: #18181b;
+}
+
+.apagar {
+  background: #18181b;
+  color: white;
+}
+
+.mensagem {
+  margin-top: 18px;
+  padding: 12px 14px;
+  border-radius: 7px;
+  background: #e4e4e7;
+  font-weight: 650;
+}
+
+.mensagem.erro {
+  background: #f4f4f5;
+  border-left: 4px solid #18181b;
+}
+
+.barra-lista {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 22px;
+}
+
+.barra-lista h2 {
+  margin-top: 8px;
+}
+
+.lista {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.livro {
+  display: grid;
+  grid-template-columns: 50px 1fr auto;
+  align-items: center;
+  gap: 18px;
+  padding: 18px;
+  border: 1px solid #e4e4e7;
+  border-radius: 10px;
+}
+
+.livro-id {
+  font-weight: 900;
+  color: #a1a1aa;
+}
+
+.livro h3 {
+  margin: 0 0 4px;
+  font-size: 18px;
+}
+
+.autor {
+  margin: 0;
+  color: #52525b;
+}
+
+.detalhes {
+  display: flex;
+  gap: 15px;
+  margin-top: 9px;
+  font-size: 13px;
+  color: #71717a;
+}
+
+.acoes {
+  display: flex;
+  gap: 8px;
+}
+
+.vazio {
+  padding: 35px 10px;
+  text-align: center;
+  color: #71717a;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+footer {
+  display: flex;
+  justify-content: space-between;
+  color: #a1a1aa;
+  font-size: 12px;
+  padding: 8px 2px;
+}
+
+@media (max-width: 700px) {
+  .pagina {
+    width: min(100% - 20px, 1100px);
+    padding-top: 25px;
+  }
+
+  .painel {
+    padding: 18px;
+  }
+
+  .formulario {
+    grid-template-columns: 1fr;
+  }
+
+  .campo-grande,
+  .acoes-form {
+    grid-column: span 1;
+  }
+
+  .livro {
+    grid-template-columns: 35px 1fr;
+  }
+
+  .acoes {
+    grid-column: span 2;
+  }
+
+  .barra-lista,
+  footer {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+}

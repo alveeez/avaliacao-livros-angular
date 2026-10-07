@@ -1,0 +1,142 @@
+<main class="pagina">
+  <header class="cabecalho">
+    <div>
+      <span class="tag">ANGULAR + API REST</span>
+      <h1>📚 Avaliação de Livros</h1>
+      <p>Front-end desenvolvido para consumir a API REST da Fase 1.</p>
+    </div>
+  </header>
+
+  <section class="painel">
+    <div class="titulo-secao">
+      <div>
+        <span class="numero">{{ editando ? '02' : '01' }}</span>
+        <div>
+          <h2>{{ editando ? 'Editar livro' : 'Cadastrar livro' }}</h2>
+          <p>{{ editando ? 'Atualize os dados e envie através do PUT.' : 'Preencha o formulário para enviar um POST.' }}</p>
+        </div>
+      </div>
+    </div>
+
+    <form (ngSubmit)="salvar()" class="formulario">
+      <div class="campo campo-grande">
+        <label for="titulo">Título *</label>
+        <input
+          id="titulo"
+          name="titulo"
+          type="text"
+          [(ngModel)]="livroForm.titulo"
+          placeholder="Ex.: O Senhor dos Anéis"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="autor">Autor *</label>
+        <input
+          id="autor"
+          name="autor"
+          type="text"
+          [(ngModel)]="livroForm.autor"
+          placeholder="Ex.: J. R. R. Tolkien"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="genero">Gênero *</label>
+        <input
+          id="genero"
+          name="genero"
+          type="text"
+          [(ngModel)]="livroForm.genero"
+          placeholder="Ex.: Fantasia"
+          required
+        >
+      </div>
+
+      <div class="campo">
+        <label for="ano">Ano de publicação *</label>
+        <input
+          id="ano"
+          name="anoPublicacao"
+          type="number"
+          [(ngModel)]="livroForm.anoPublicacao"
+          placeholder="Ex.: 1954"
+          required
+        >
+      </div>
+
+      <div class="acoes-form">
+        <button class="btn principal" type="submit">
+          {{ editando ? '✓ Atualizar livro' : '+ Cadastrar livro' }}
+        </button>
+
+        @if (editando) {
+          <button class="btn secundario" type="button" (click)="limparFormulario()">
+            Cancelar
+          </button>
+        }
+      </div>
+    </form>
+
+    @if (mensagem) {
+      <div class="mensagem" [class.erro]="tipoMensagem === 'erro'">
+        {{ mensagem }}
+      </div>
+    }
+  </section>
+
+  <section class="painel">
+    <div class="barra-lista">
+      <div>
+        <span class="tag">GET ALL</span>
+        <h2>Livros cadastrados</h2>
+      </div>
+
+      <button class="btn secundario" type="button" (click)="carregarLivros()">
+        ↻ Atualizar lista
+      </button>
+    </div>
+
+    @if (livros.length === 0) {
+      <div class="vazio">
+        <strong>Nenhum livro cadastrado.</strong>
+        <span>Cadastre o primeiro livro usando o formulário acima.</span>
+      </div>
+    }
+
+    <div class="lista">
+      @for (livro of livros; track livro.id) {
+        <article class="livro">
+          <div class="livro-id">#{{ livro.id }}</div>
+
+          <div class="livro-conteudo">
+            <h3>{{ livro.titulo }}</h3>
+            <p class="autor">{{ livro.autor }}</p>
+
+            <div class="detalhes">
+              <span>🏷️ {{ livro.genero }}</span>
+              <span>📅 {{ livro.anoPublicacao }}</span>
+            </div>
+          </div>
+
+          <div class="acoes">
+            <button class="btn editar" type="button" (click)="editar(livro)">
+              Editar
+            </button>
+
+            <button class="btn apagar" type="button" (click)="deletar(livro.id)">
+              Apagar
+            </button>
+          </div>
+        </article>
+      }
+    </div>
+  </section>
+
+  <footer>
+    <span>Projeto acadêmico — ADS</span>
+    <span>Angular + Spring Boot REST</span>
+  </footer>
+</main>
